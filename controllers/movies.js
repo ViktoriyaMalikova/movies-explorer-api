@@ -5,7 +5,7 @@ const ForbiddenError = require('../errors/ForbiddenError');
 const Created = require('../utils/status');
 
 module.exports.getMovies = (req, res, next) => {
-  Movie.find({})
+  Movie.find({ owner: req.user._id })
     .then((movies) => res.send(movies))
     .catch((err) => next(err));
 };
@@ -57,11 +57,10 @@ module.exports.deleteMovie = (req, res, next) => {
     .then((movie) => {
       if (movie.owner.toString() !== req.user._id) {
         throw new ForbiddenError('Вы не можете удалять фильм другого пользователя');
-      } else {
-        Movie.deleteOne(movie)
-          .then(() => res.send({ message: 'Фильм успешно удален' }))
-          .catch((err) => next(err));
       }
+      Movie.deleteOne(movie)
+        .then(() => res.send({ message: 'Фильм успешно удален' }))
+        .catch((err) => next(err));
     })
     .catch((err) => {
       if (err.name === 'CastError') {
