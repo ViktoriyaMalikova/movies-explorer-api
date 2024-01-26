@@ -13,9 +13,9 @@ API для дипломного проекта
 
 ## Ссылки на проект
 
-IP 
+IP 158.160.144.170
 
-Backend 
+Backend https://api.movies.vika.nomoredomainsmonster.ru/
 
 Ссылка на репозиторий https://github.com/ViktoriyaMalikova/movies-explorer-api
 
