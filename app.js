@@ -14,7 +14,18 @@ const { PORT = 3000 } = process.env;
 
 const app = express();
 
-app.use(cors());
+const options = {
+  origin: [
+    '[undefined](http://localhost:3001)',
+    'https://movies.vika.nomoredomainsmonster.ru/'],
+  methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+  preflightContinue: false,
+  optionsSuccessStatus: 204,
+  allowedHeaders: ['Content-Type', 'origin', 'Authorization'],
+  credentials: true,
+};
+
+app.use(cors(options));
 
 app.use(helmet());
 
