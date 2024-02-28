@@ -17,6 +17,7 @@ const app = express();
 const options = {
   origin: [
     'http://localhost:3001',
+    'https://api.movies.vika.nomoredomainsmonster.ru',
   ],
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
   preflightContinue: false,
